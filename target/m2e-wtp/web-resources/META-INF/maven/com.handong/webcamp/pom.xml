@@ -34,6 +34,15 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/cglib/cglib -->
+		<!-- @Configuration needs cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+
 		<!-- Spring jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>

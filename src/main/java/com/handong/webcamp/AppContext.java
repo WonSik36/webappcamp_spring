@@ -6,19 +6,26 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mysql.jdbc.Driver;
 
 @Configuration
-@PropertySource("/com/handong/webcamp/database.properties")
+@EnableTransactionManagement
+@PropertySource("classpath:com/handong/webcamp/database.properties")
 public class AppContext {
-	@Value("${db.driverClass}") Class<? extends Driver> driverClass;
-	@Value("${db.url}") String url;
-	@Value("${db.username}") String username;
-	@Value("${db.password}") String password;
+	@Value("${db.driverClass}") 
+	Class<? extends Driver> driverClass;
+	@Value("${db.url}") 
+	String url;
+	@Value("${db.username}") 
+	String username;
+	@Value("${db.password}") 
+	String password;
 	
 	/*
 	 * DB Connection and Transaction
@@ -41,5 +48,10 @@ public class AppContext {
 		tm.setDataSource(dataSource());
 		
 		return tm;
+	}
+	
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+		return new PropertySourcesPlaceholderConfigurer();
 	}
 }
