@@ -2,15 +2,15 @@ package com.handong.webcamp.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.handong.webcamp.dao.UserDao;
 import com.handong.webcamp.dto.UserDto;
 
+@Service
 public class UserServiceImpl implements UserService {
-	private UserDao userDao;
-	
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
+	@Autowired private UserDao userDao;
 	
 	@Override
 	public void add(UserDto user) {

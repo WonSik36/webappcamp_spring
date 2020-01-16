@@ -14,12 +14,13 @@
 	<!-- add context to properties -->
 	<context:property-placeholder location="/WEB-INF/*.properties" />
 	
-	<!-- allow annotation to beans in application context -->
-	<context:annotation-config/>
-	
-	<!-- aop: transcation -->
-	<tx:annotation-driven/>
+	<!-- aop: transaction -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
 	<!-- db -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="${db.driverClass}"/>
@@ -28,16 +29,5 @@
 		<property name="password" value="${db.password}"/>
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	
-	<bean id="userDao" class="com.handong.webcamp.dao.UserDaoJdbc">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	
-	<bean id="userService" class="com.handong.webcamp.service.UserServiceImpl">
-		<property name="userDao" ref="userDao"/>
-	</bean>
 	
 </beans>

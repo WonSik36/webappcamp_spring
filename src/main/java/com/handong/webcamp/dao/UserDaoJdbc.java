@@ -6,13 +6,17 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.handong.webcamp.dto.UserDto;
 
+@Repository
 public class UserDaoJdbc implements UserDao {
 	private JdbcTemplate jdbcTemplate;
+	
 	private RowMapper<UserDto> userMapper = new RowMapper<UserDto>() {
     	public UserDto mapRow(ResultSet rs, int rowNum)throws SQLException{
 			UserDto user = new UserDto();
@@ -25,6 +29,7 @@ public class UserDaoJdbc implements UserDao {
 		}
     };
 	
+    @Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
