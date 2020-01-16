@@ -41,10 +41,10 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/{userID}", method = RequestMethod.GET)
-	public ModelAndView user(@PathVariable String userID, ModelAndView mv) {
-		logger.info("user "+userID+" request");
-		UserDto user = userService.get(userID); 
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ModelAndView user(@PathVariable String id, ModelAndView mv) {
+		logger.info("user "+id+" request");
+		UserDto user = userService.get(id); 
 		List<UserDto> list = new ArrayList<UserDto>();
 		list.add(user);
 		

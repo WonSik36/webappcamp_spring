@@ -44,7 +44,7 @@ public class UserDaoJdbc implements UserDao {
 
 	@Override
 	public UserDto get(String id) {
-		return jdbcTemplate.queryForObject("SELECT * FROM user WHERE id = ?", new Object[] {id}, userMapper);
+		return jdbcTemplate.queryForObject("SELECT * FROM user WHERE userID = ?", new Object[] {id}, userMapper);
 	}
 
 	@Override
