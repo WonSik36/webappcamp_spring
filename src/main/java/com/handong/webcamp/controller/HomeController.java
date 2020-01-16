@@ -1,4 +1,4 @@
-package com.handong.webcamp;
+package com.handong.webcamp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
