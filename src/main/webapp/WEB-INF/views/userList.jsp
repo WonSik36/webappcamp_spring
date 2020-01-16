@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:if test="${not empty userID}">
+		<h3>
+			안녕하세요 ${userID} 님 <a href="./logout">로그아웃</a>
+		</h3>
+	</c:if>
 	<table border="1" width="90%">
 		<tr>
 			<th>Id</th>
@@ -26,5 +31,10 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div>
+		<a href="./add">
+			<button>사용자 추가</button>
+		</a>
+	</div>
 </body>
 </html>

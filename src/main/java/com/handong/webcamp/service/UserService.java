@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.handong.webcamp.dto.UserDto;
+import com.handong.webcamp.util.ServiceResult;
 
 @Transactional
 public interface UserService {
-	void add(UserDto user);
+	ServiceResult add(UserDto user);
 	@Transactional(readOnly=true)
 	UserDto get(String id);
 	@Transactional(readOnly=true)
