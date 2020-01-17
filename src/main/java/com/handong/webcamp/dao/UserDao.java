@@ -1,14 +1,15 @@
 package com.handong.webcamp.dao;
 
 import java.util.List;
-import com.handong.webcamp.dto.UserDto;;
+import com.handong.webcamp.dto.UserDto;
+import com.handong.webcamp.util.UpdateResult;;
 
 public interface UserDao {
-	public void add(UserDto user);
+	public UpdateResult add(UserDto user);
 	public UserDto get(String id);
 	public List<UserDto> getAll();
-	public void delete(String id);
-	public void deleteAll();
+	public UpdateResult delete(String id);
+	public UpdateResult deleteAll();
 	public int getCount();
-	public void update(UserDto user);
+	public UpdateResult update(UserDto user);
 }

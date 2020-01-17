@@ -20,6 +20,8 @@
 			<th>Password</th>
 			<th>Gender</th>
 			<th>Email</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		<c:forEach items="${users}" var="u">
 			<tr>
@@ -28,6 +30,8 @@
 				<td>${u.getUserPassword()}</td>
 				<td>${u.getUserGender()}</td>
 				<td>${u.getUserEmail()}</td>
+				<td><a href="./users/${u.userID}">UPDATE</a></td>
+				<td><a href="#" onclick="deleteUser('${u.userID}')">DELETE</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -36,5 +40,18 @@
 			<button>사용자 추가</button>
 		</a>
 	</div>
+	<div>
+		<form method="post" id="delete">
+			<input type="hidden" name="_method" value="delete"> 
+		</form>
+	</div>
+	
+	<script>
+		function deleteUser(id){
+			var frm = document.getElementById("delete");
+			frm.setAttribute("action","./users/"+id);
+			frm.submit();
+		}
+	</script>
 </body>
 </html>

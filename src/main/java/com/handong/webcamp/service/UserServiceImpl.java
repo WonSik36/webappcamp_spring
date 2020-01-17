@@ -8,20 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.handong.webcamp.dao.UserDao;
 import com.handong.webcamp.dto.UserDto;
-import com.handong.webcamp.util.ServiceResult;
+import com.handong.webcamp.util.UpdateResult;
 
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired private UserDao userDao;
 	
 	@Override
-	public ServiceResult add(UserDto user) {
-		try {			
-			userDao.add(user);
-		}catch(DuplicateKeyException e) {
-			return ServiceResult.ERR_DUP_PRM_KEY;
-		}
-		return ServiceResult.OK;
+	public UpdateResult add(UserDto user) {
+		return userDao.add(user);
 	}
 
 	@Override
@@ -35,18 +30,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteAll() {
-		userDao.deleteAll();
+	public UpdateResult deleteAll() {
+		return userDao.deleteAll();
 	}
 
 	@Override
-	public void delete(String id) {
-		userDao.delete(id);
+	public UpdateResult delete(String id) {
+		return userDao.delete(id);
 	}
 
 	@Override
-	public void update(UserDto user) {
-		userDao.update(user);
+	public UpdateResult update(UserDto user) {
+		return userDao.update(user);
 	}
 
 }

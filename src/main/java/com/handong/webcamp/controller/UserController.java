@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.handong.webcamp.dto.UserDto;
 import com.handong.webcamp.service.UserService;
-import com.handong.webcamp.util.ServiceResult;
+import com.handong.webcamp.util.UpdateResult;
 
 @Controller
 @RequestMapping("/users")
@@ -28,9 +28,9 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
-	 * Simply selects the home view to render by returning its name.
+	 * User List
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView userList(ModelAndView mv) {
 		logger.info("user list request");
 		List<UserDto> list = userService.getAll(); 
@@ -41,19 +41,51 @@ public class UserController {
 		return mv;
 	}
 	
+	/**
+	 * Get Specific User's Form to Update
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ModelAndView user(@PathVariable String id, ModelAndView mv) {
-		logger.info("user "+id+" request");
+	public ModelAndView userForm(@PathVariable String id, ModelAndView mv) {
+		logger.info("user "+id+" update form request");
 		UserDto user = userService.get(id); 
-		List<UserDto> list = new ArrayList<UserDto>();
-		list.add(user);
 		
-		mv.addObject("users", list);
-		mv.setViewName("userList");
+		mv.addObject("user", user);
+		mv.setViewName("userEdit");
 		
 		return mv;
 	}
 	
+	/**
+	 * Update User
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ModelAndView userUpdate(@ModelAttribute UserDto user, ModelAndView mv) {
+		logger.info("user "+user.getUserID()+" update request");
+		UpdateResult res = userService.update(user);
+		
+		mv.addObject("message", res.status());
+		mv.setViewName("redirect:/users/result");
+		
+		return mv;
+	}
+	
+	/**
+	 * Delete User
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ModelAndView userDelete(@PathVariable String id, ModelAndView mv) {
+		logger.info("user "+id+" delete request");
+		UpdateResult res = userService.delete(id);
+		
+		mv.addObject("message", res.status());
+		mv.setViewName("redirect:/users/result");
+		
+		return mv;
+	}
+	
+	/**
+	 * Get User Registration Form
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView userForm(ModelAndView mv) {
 		logger.info("user add form request");
@@ -63,25 +95,39 @@ public class UserController {
 		return mv;
 	}
 	
+	/**
+	 * Add User
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView userAdd(@ModelAttribute UserDto user, ModelAndView mv) {
 		
 		logger.info("user add request");
 		
+		// invalid form was passed
 		if(!user.isValid()) {
-			mv.addObject("message", ServiceResult.ERR_REQUIRED.status());
+			mv.addObject("message", UpdateResult.ERR_REQUIRED.status());
 			mv.setViewName("result");
-			return mv;
+		}else {			
+			UpdateResult res = userService.add(user);
+			
+			mv.addObject("message", res.status());
+			mv.setViewName("result");
 		}
-		
-		ServiceResult res = userService.add(user);
-		
-		if(res.isOK())
-			mv.addObject("userID",user.getUserID());
-		
-		mv.addObject("message", res.status());
-		mv.setViewName("result");
 		
 		return mv;
 	}
+	
+	/**
+	 * Result
+	 */
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
+	public ModelAndView result(@RequestParam("message") String msg, ModelAndView mv) {
+		
+		logger.info("user add request");
+		
+		mv.addObject("message",msg);
+		mv.setViewName("result");
+		return mv;
+	}
+	
 }

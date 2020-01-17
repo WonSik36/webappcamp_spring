@@ -17,7 +17,7 @@
 	
 	<script>
 		alert("${message}");
-		location.href="/webcamp/users/"
+		location.href="/webcamp/users"
 	</script>
 </body>
 </html>
