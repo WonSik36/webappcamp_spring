@@ -38,5 +38,6 @@
 * 프로젝트 2
 	https://github.com/WonSik36/webappcamp_spring/blob/master/pom.xml
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/spring/root-context.xml
-	
+	https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/MySQLConnectionTest.java
+	https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/MyBatisTest.java
 	
