@@ -34,3 +34,9 @@
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/views/userForm.jsp
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/views/userEdit.jsp
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/views/result.jsp
+	
+* 프로젝트 2
+	https://github.com/WonSik36/webappcamp_spring/blob/master/pom.xml
+	https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/spring/root-context.xml
+	
+	
