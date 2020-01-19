@@ -41,3 +41,15 @@
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/MySQLConnectionTest.java
 	https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/MyBatisTest.java
 	
+* 프로젝트 3
+	* 매퍼를 인터페이스를 이용하여 호출
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/webapp/WEB-INF/spring/root-context.xml
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/java/com/handong/webcamp/mapper/UserMapper.java
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/resources/mapper/sql-user.xml
+	* 테스트
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/UserMapperTest.java
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/java/com/handong/webcamp/mybatis/application-context.xml
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/test/resources/database.properties
+	* 컨트롤러, 서비스
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/java/com/handong/webcamp/controller/UserMapperController.java
+		https://github.com/WonSik36/webappcamp_spring/blob/master/src/main/java/com/handong/webcamp/service/UserServiceImplMapper.java
