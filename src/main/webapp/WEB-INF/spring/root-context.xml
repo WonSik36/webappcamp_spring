@@ -41,10 +41,20 @@
 		<property name="password" value="${db.password}"/>
 	</bean>
 	
-	<!-- mybatis SqlSessionFactoryBean -->
+	<!-- Mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSourceMyBatis"></property>
+        <property name="dataSource" ref="dataSourceMyBatis"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
     </bean>
 
+	<!-- Mybatis SqlSessionTemplate -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- Mapper Annotation Scanner -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.handong.webcamp.mapper" />
+	</bean>
 
 </beans>

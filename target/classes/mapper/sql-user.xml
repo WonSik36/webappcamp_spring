@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.handong.webcamp.mapper.UserMapper">
+	<insert id="insert" parameterType="com.handong.webcamp.dto.UserDto">
+		<![CDATA[
+			INSERT INTO user 
+			VALUES(
+				#{userID},
+				#{userPassword},
+				#{userName},
+				#{userGender},
+				#{userEmail}
+			)
+		]]>
+	</insert>
+	
+	<select id="selectOne" parameterType="string" resultType="com.handong.webcamp.dto.UserDto">
+		<![CDATA[
+			SELECT * 
+			FROM 
+				user 
+			WHERE 
+				userID = #{userID}
+		]]>
+	</select>
+	
+	<select id="selectList" resultType="com.handong.webcamp.dto.UserDto">
+		<![CDATA[
+			SELECT * 
+			FROM 
+				user 
+			ORDER BY
+				userID ASC
+		]]>
+	</select>
+	
+	<select id="userCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) 
+			FROM 
+				user
+		]]>
+	</select>
+	
+	<delete id="delete" parameterType="string">
+		<![CDATA[
+			DELETE FROM user 
+			WHERE 
+				userID = #{userID}
+		]]>
+	</delete>
+	
+	<delete id="deleteAll">
+		<![CDATA[
+			DELETE FROM user 
+		]]>
+	</delete>
+	
+	<update id="update" parameterType="com.handong.webcamp.dto.UserDto">
+		<![CDATA[
+			UPDATE user 
+			SET 
+				userPassword=#{userPassword}, 
+				userName=#{userName}, 
+				userGender=#{userGender}, 
+				userEmail=#{userEmail} 
+			WHERE 
+				userID=#{userID}
+		]]>
+	</update>
+	
+</mapper>

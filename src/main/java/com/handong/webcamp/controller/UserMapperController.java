@@ -21,11 +21,11 @@ import com.handong.webcamp.service.UserService;
 import com.handong.webcamp.util.UpdateResult;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/usermappers")
 @SessionAttributes("userID")
-public class UserController {
+public class UserMapperController {
 	@Autowired 
-	@Qualifier("userServiceImplJdbc")
+	@Qualifier("userServiceImplMapper")
 	UserService userService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -67,7 +67,7 @@ public class UserController {
 		UpdateResult res = userService.update(user);
 		
 		mv.addObject("message", res.status());
-		mv.setViewName("redirect:/users/result");
+		mv.setViewName("redirect:/usermappers/result");
 		
 		return mv;
 	}
@@ -81,7 +81,7 @@ public class UserController {
 		UpdateResult res = userService.delete(id);
 		
 		mv.addObject("message", res.status());
-		mv.setViewName("redirect:/users/result");
+		mv.setViewName("redirect:/usermappers/result");
 		
 		return mv;
 	}

@@ -10,8 +10,8 @@ import com.handong.webcamp.dao.UserDao;
 import com.handong.webcamp.dto.UserDto;
 import com.handong.webcamp.util.UpdateResult;
 
-@Service
-public class UserServiceImpl implements UserService {
+@Service("userServiceImplJdbc")
+public class UserServiceImplJdbc implements UserService {
 	@Autowired private UserDao userDao;
 	
 	@Override

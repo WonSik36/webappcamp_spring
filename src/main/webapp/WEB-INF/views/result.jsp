@@ -17,7 +17,7 @@
 	
 	<script>
 		alert("${message}");
-		location.href="/webcamp/users"
+		history.back();
 	</script>
 </body>
 </html>
