@@ -28,7 +28,7 @@ public class UserController {
 	@Qualifier("userServiceImplJdbc")
 	UserService userService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	/**
 	 * User List

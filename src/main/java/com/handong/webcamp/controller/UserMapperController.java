@@ -28,7 +28,7 @@ public class UserMapperController {
 	@Qualifier("userServiceImplMapper")
 	UserService userService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserMapperController.class);
 	
 	/**
 	 * User List
@@ -39,7 +39,7 @@ public class UserMapperController {
 		List<UserDto> list = userService.getAll(); 
 		
 		mv.addObject("users", list);
-		mv.setViewName("userList");
+		mv.setViewName("userListMapper");
 		
 		return mv;
 	}
@@ -53,7 +53,7 @@ public class UserMapperController {
 		UserDto user = userService.get(id); 
 		
 		mv.addObject("user", user);
-		mv.setViewName("userEdit");
+		mv.setViewName("userEditMapper");
 		
 		return mv;
 	}
@@ -93,7 +93,7 @@ public class UserMapperController {
 	public ModelAndView userForm(ModelAndView mv) {
 		logger.info("user add form request");
 
-		mv.setViewName("userForm");
+		mv.setViewName("userFormMapper");
 		
 		return mv;
 	}
@@ -109,12 +109,12 @@ public class UserMapperController {
 		// invalid form was passed
 		if(!user.isValid()) {
 			mv.addObject("message", UpdateResult.ERR_REQUIRED.status());
-			mv.setViewName("result");
+			mv.setViewName("resultMapper");
 		}else {			
 			UpdateResult res = userService.add(user);
 			
 			mv.addObject("message", res.status());
-			mv.setViewName("result");
+			mv.setViewName("resultMapper");
 		}
 		
 		return mv;
@@ -129,7 +129,7 @@ public class UserMapperController {
 		logger.info("user add request");
 		
 		mv.addObject("message",msg);
-		mv.setViewName("result");
+		mv.setViewName("resultMapper");
 		return mv;
 	}
 	
