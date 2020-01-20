@@ -18,6 +18,10 @@
 	<!-- add context to properties -->
 	<context:property-placeholder location="classpath:*.properties" />
  
+ 	<context:component-scan base-package="com.handong.webcamp.dao" />
+ 	<context:component-scan base-package="com.handong.webcamp.mapper" />
+ 	<context:component-scan base-package="com.handong.webcamp.service" />
+ 
 	<!-- aop: transaction -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
